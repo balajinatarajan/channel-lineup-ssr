@@ -1,0 +1,7 @@
+<h2>Channel Lineup</h2>
+
+<ul class="channels">
+  <li *ngFor="let channel of channels">
+    <span class="badge">{{channel.id}}</span> {{channel.name}}, {{channel.category}}, {{channel.genre}}
+  </li>
+</ul>
