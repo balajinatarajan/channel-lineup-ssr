@@ -56,6 +56,30 @@ export class ChannelService {
     );
   }
 
+  /* GET heroes whose name contains search term */
+  getChannelsByCategory(category: string): Observable<Channel[]> {
+    if (!category.trim()) {
+      // if not search term, return empty channel array.
+      return of([]);
+    }
+    return this.http.get<Channel[]>(`${this.channelsUrl}/?category=${category}`).pipe(
+      tap(_ => this.log(`found channels matching "${category}"`)),
+      catchError(this.handleError<Channel[]>('searchChannels', []))
+    );
+  }
+
+  /* GET heroes whose name contains search term */
+  getChannelsByGenre(genre: string): Observable<Channel[]> {
+    if (!genre.trim()) {
+      // if not search term, return empty channel array.
+      return of([]);
+    }
+    return this.http.get<Channel[]>(`${this.channelsUrl}/?genre=${genre}`).pipe(
+      tap(_ => this.log(`found channels matching "${genre}"`)),
+      catchError(this.handleError<Channel[]>('searchChannels', []))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

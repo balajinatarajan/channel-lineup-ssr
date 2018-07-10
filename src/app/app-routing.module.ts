@@ -8,12 +8,12 @@ import { GenreComponent } from './genre/genre.component';
 const routes: Routes = [
   { path: '', redirectTo: '/channels', pathMatch: 'full' },
   { path: 'channels', component: ChannelsComponent },
-  { path: 'channels/:category', component: CategoryComponent},
-  { path: 'channels/:category/:genre', component: GenreComponent }
+  { path: 'channels/:category', component: CategoryComponent, runGuardsAndResolvers: 'always'},
+  { path: 'channels/:category/:genre', component: GenreComponent, runGuardsAndResolvers: 'always'}
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}

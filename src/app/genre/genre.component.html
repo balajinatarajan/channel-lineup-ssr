@@ -1,3 +1,9 @@
-<p>
-  genre works!
-</p>
+<nav>
+  <a routerLink="/channels/music/pop">Pop</a>
+  <a routerLink="/channels/music/rock">Rock</a>
+</nav>
+<ul class="channels">
+  <li *ngFor="let channel of channels">
+    <span class="badge">{{channel.id}}</span> {{channel.name}}, {{channel.category}}, {{channel.genre}}
+  </li>
+</ul>
